@@ -1,27 +1,13 @@
-# Anirveda
+# Bugs description:
 
-This repository contains the source code for anirveda's website.
+Check out this detailed description on:
+[StackOverflow](https://stackoverflow.com/questions/75713549/passing-value-to-unrendered-component)
 
-Visit the website at [anirveda.osailpdeu.in](https://anirveda.osailpdeu.in)
+## Steps to reproduce
 
-## Tech Stack
+1. Head to `/mockrbi/admin/situations` route and click on any of the listed situation on the page and check the console.
+   It will log the situation object.
 
-- [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/) (for development server)
+2. Now head to `/mockrbi/play` route and see the console. It will log empty situation object.
 
-> Here's the [maintainer's guide](./Maintainers.md) for maintainers.
-
-## How to run the website locally
-
-### Prerequisites
-
-- Node.js (Download from [here](https://nodejs.org/en/download/))
-- npm (comes with Node.js)
-
-### Steps
-
-1. Clone the repository
-2. Run `npm install` to install all the dependencies
-3. Run `npm run dev` to start the development server
-4. Open `localhost:3000` in your browser
+Even though situation object is being store in the state in context, it is not being persisted on the route change.

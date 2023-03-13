@@ -8,11 +8,8 @@ import {SituationContext} from "../../Context/SituationProvider"
 import situations from "../../data/mockrbi/situations"
 
 export default function AllSituations() {
-  // Using the context
-  // Destructuring the state and the function from the context right here
-  // This syntax is for nested destructuring
   const {
-    state: {completedSituationsTillNow},
+    state: {clickedSituation, completedSituationsTillNow},
     markSituationComplete,
   } = useContext(SituationContext)
 
@@ -21,7 +18,7 @@ export default function AllSituations() {
     markSituationComplete(situation)
   }
 
-  // console.log(clickedSituation);
+  console.log(clickedSituation)
 
   return (
     <div className="mt-4 flex flex-wrap">

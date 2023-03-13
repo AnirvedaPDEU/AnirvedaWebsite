@@ -1,36 +1,20 @@
 import React, {useState, useEffect} from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 
 // Auth0
-import { useAuth0 } from "@auth0/auth0-react"
-
 export default function Navbar() {
-
-  // Getting user email id of authenticated user
-  const { user, isLoading, isAuthenticated } = useAuth0()
-  // console.log(isLoading + " " + isAuthenticated);
-
-  // Logout
-  const { logout } = useAuth0()
-
   const location = useLocation()
-  const navigate = useNavigate()
   const [currentPath, setCurrentPath] = useState(location.pathname)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     setCurrentPath(location.pathname)
     if (currentPath === "/mockrbi/play") {
-      setVisible(true) 
-      // Commented out temporarily for testing
-      // if (isLoading===false && isAuthenticated===false) {
-      //   navigate("/mockrbi")  
-      // }
+      setVisible(true)
     } else {
       setVisible(false)
     }
-  }, [currentPath, isLoading])
-
+  }, [currentPath])
 
   return (
     <div>
@@ -42,26 +26,8 @@ export default function Navbar() {
         </div>
         {visible && (
           <div className="text-right">
-            {isLoading ? (
-              <h2 className="text-lg text-secondary">Loading...</h2>
-            ) : (
-              <h2 className="text-lg text-secondary">
-                {isAuthenticated && user.email}
-              </h2>
-            )}
-
-            <h3
-              className="mt-2 cursor-pointer text-primary"
-              onClick={() =>
-                logout({
-                  logoutParams: {
-                    returnTo: "http://localhost:5173/mockrbi", // for local testing
-                  },
-                })
-              }
-            >
-              Logout
-            </h3>
+            <h2 className="text-lg text-secondary">email</h2>
+            <h3 className="mt-2 cursor-pointer text-primary">Logout</h3>
           </div>
         )}
       </div>
